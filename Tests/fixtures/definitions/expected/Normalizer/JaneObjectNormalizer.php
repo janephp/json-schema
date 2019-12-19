@@ -8,11 +8,11 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class LazyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\_List' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\_ListNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BarItemNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\HelloWorld' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\HelloWorldNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

@@ -8,11 +8,11 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class LazyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\Test' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\TestNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    protected $normalizers = array('Jane\\JsonSchema\\Tests\\Expected\\Model\\Test' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\TestNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\OtherchildtypeNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Childtype' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\ChildtypeNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Parenttype' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\ParenttypeNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Bar' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BarNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\Baz' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BazNormalizer', 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BazBaz' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BazBazNormalizer'), $normalizersCache = array();
     public function supportsDenormalization($data, $type, $format = null)
     {
         return array_key_exists($type, $this->normalizers);

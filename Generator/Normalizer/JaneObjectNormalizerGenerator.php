@@ -8,7 +8,7 @@ use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
 
-trait LazyNormalizerGenerator
+trait JaneObjectNormalizerGenerator
 {
     protected function createBaseNormalizerSupportsDenormalizationMethod(): Stmt\ClassMethod
     {
